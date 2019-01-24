@@ -43,7 +43,7 @@ void token::issue( name to, asset quantity, string memo )
    eosio_assert( existing != statstable.end(), "token with symbol does not exist, create token before issue" );
    const auto& st = *existing;
 
-   //require_auth( st.issuer );
+   require_auth( st.issuer );
    eosio_assert( quantity.is_valid(), "invalid quantity" );
    eosio_assert( quantity.amount > 0, "must issue positive quantity" );
 
